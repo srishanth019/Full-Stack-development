@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Neon Glass Registration</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            height: 100vh;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .card {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            padding: 30px;
+            width: 350px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px #00f2ff;
+            color: white;
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #00f2ff;
+        }
+
+        .input-box {
+            position: relative;
+            margin-bottom: 20px;
+        }
+
+        .input-box input {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-bottom: 2px solid #00f2ff;
+            background: transparent;
+            color: white;
+            outline: none;
+        }
+
+        .input-box label {
+            position: absolute;
+            left: 0;
+            top: 10px;
+            color: #aaa;
+            transition: 0.3s;
+        }
+
+        .input-box input:focus ~ label,
+        .input-box input:valid ~ label {
+            top: -12px;
+            font-size: 12px;
+            color: #00f2ff;
+        }
+
+        .error {
+            font-size: 12px;
+            color: #ff4d4d;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            background: #00f2ff;
+            color: black;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            box-shadow: 0 0 15px #00f2ff;
+            transform: scale(1.05);
+        }
+
+        .success {
+            text-align: center;
+            margin-top: 10px;
+            color: #00ff99;
+        }
+
+        .toggle {
+            position: absolute;
+            right: 0;
+            top: 10px;
+            cursor: pointer;
+            font-size: 12px;
+            color: #00f2ff;
+        }
+
+        .profile-preview {
+            display: block;
+            margin: 0 auto 15px;
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 2px solid #00f2ff;
+            object-fit: cover;
+        }
+
+        input[type="file"] {
+            color: white;
+            margin-bottom: 15px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="card">
+
+    <h2> link Register</h2>
+
+    <img src="https://cdn-icons-png.flaticon.com/512/149/149071.png" id="preview" class="profile-preview">
+
+    <input type="file" accept="image/*" onchange="previewImage(event)">
+
+    <form onsubmit="return validateForm()">
+
+        <div class="input-box">
+            <input type="text" id="name" required onkeyup="validateName()">
+            <label>Full Name</label>
+        </div>
+        <div class="error" id="nameError"></div>
+
+        <div class="input-box">
+            <input type="text" id="email" required onkeyup="validateEmail()">
+            <label>Email</label>
+        </div>
+        <div class="error" id="emailError"></div>
+
+        <div class="input-box">
+            <input type="password" id="password" required onkeyup="validatePassword()">
+            <label>Password</label>
+            <span class="toggle" onclick="togglePassword()">Show</span>
+        </div>
+        <div class="error" id="passwordError"></div>
+
+        <button type="submit">Register</button>
+        <div class="success" id="successMsg"></div>
+
+    </form>
+</div>
+
+<script>
+function validateName() {
+    let name = document.getElementById("name").value;
+    let pattern = /^[A-Za-z ]+$/;
+    if (!pattern.test(name)) {
+        document.getElementById("nameError").innerHTML = "Only letters allowed";
+        return false;
+    }
+    document.getElementById("nameError").innerHTML = "";
+    return true;
+}
+
+function validateEmail() {
+    let email = document.getElementById("email").value;
+    let pattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+    if (!pattern.test(email)) {
+        document.getElementById("emailError").innerHTML = "Invalid email";
+        return false;
+    }
+    document.getElementById("emailError").innerHTML = "";
+    return true;
+}
+
+function validatePassword() {
+    let pass = document.getElementById("password").value;
+    if (pass.length < 6) {
+        document.getElementById("passwordError").innerHTML = "Min 6 characters required";
+        return false;
+    }
+    document.getElementById("passwordError").innerHTML = "";
+    return true;
+}
+
+function togglePassword() {
+    let pass = document.getElementById("password");
+    pass.type = pass.type === "password" ? "text" : "password";
+}
+
+function previewImage(event) {
+    let reader = new FileReader();
+    reader.onload = function(){
+        document.getElementById("preview").src = reader.result;
+    }
+    reader.readAsDataURL(event.target.files[0]);
+}
+
+function validateForm() {
+    if (validateName() && validateEmail() && validatePassword()) {
+        document.getElementById("successMsg").innerHTML = "🚀 Registration Successful!";
+        return false;
+    }
+    return false;
+}
+</script>
+
+</body>
+</html>
