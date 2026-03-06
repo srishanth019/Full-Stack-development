@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>EventSphere - Interactive Website</title>
+
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body{
+            transition:0.5s;
+            background:#111;
+            color:white;
+        }
+
+        header{
+            background:linear-gradient(45deg,#000000,#434343);
+            text-align:center;
+            padding:20px;
+            position:sticky;
+            top:0;
+            z-index:1000;
+        }
+
+        header h1{
+            font-size:24px;
+        }
+
+        #status{
+            font-size:14px;
+            margin-top:5px;
+            color:lightgreen;
+        }
+
+        #progressBar{
+            position:fixed;
+            top:0;
+            left:0;
+            height:5px;
+            width:0%;
+            background:cyan;
+            z-index:2000;
+        }
+
+        .container{
+            padding:20px;
+        }
+
+        .card{
+            background:#1e1e1e;
+            margin-bottom:25px;
+            padding:15px;
+            border-radius:12px;
+            box-shadow:0 5px 20px rgba(0,255,255,0.3);
+            text-align:center;
+            transition:0.4s;
+        }
+
+        .card:hover{
+            transform:scale(1.05);
+            box-shadow:0 5px 25px rgba(0,255,255,0.7);
+        }
+
+        .card img{
+            width:100%;
+            border-radius:10px;
+            margin-bottom:10px;
+        }
+
+        .counter{
+            font-size:18px;
+            color:cyan;
+            font-weight:bold;
+        }
+
+        footer{
+            text-align:center;
+            padding:15px;
+            background:#000;
+            margin-top:30px;
+        }
+    </style>
+</head>
+<body>
+
+<div id="progressBar"></div>
+
+<header>
+    <h1>🌟 EventSphere</h1>
+    <p id="status">Welcome to the Interactive Experience</p>
+</header>
+
+<div class="container">
+
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1518779578993-ec3579fee39f" alt="Tech">
+        <h2>Future Technology</h2>
+        <p>Experience the power of JavaScript DOM events.</p>
+    </div>
+
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee" alt="Nature">
+        <h2>Dynamic Nature</h2>
+        <p>Scroll to see beautiful background transitions.</p>
+    </div>
+
+    <div class="card">
+        <img src="https://images.unsplash.com/photo-1492724441997-5dc865305da7" alt="Space">
+        <h2>Explore Space</h2>
+        <p>Resize window and switch tabs to trigger events.</p>
+    </div>
+
+    <div class="card">
+        <h2>📊 Live Interaction Counter</h2>
+        <p>Scroll Count: <span class="counter" id="scrollCount">0</span></p>
+        <p>Resize Count: <span class="counter" id="resizeCount">0</span></p>
+    </div>
+
+</div>
+
+<footer>
+    © 2026 EventSphere | Interactive Learning
+</footer>
+
+<script>
+
+let scrollCounter = 0;
+let resizeCounter = 0;
+
+let statusText = document.getElementById("status");
+let progressBar = document.getElementById("progressBar");
+let scrollCount = document.getElementById("scrollCount");
+let resizeCount = document.getElementById("resizeCount");
+
+// LOAD EVENT
+window.onload = function(){
+    statusText.innerHTML = "✅ EventSphere Fully Loaded!";
+    document.body.style.background = "#0f2027";
+}
+
+// SCROLL EVENT
+window.onscroll = function(){
+    scrollCounter++;
+    scrollCount.innerHTML = scrollCounter;
+    statusText.innerHTML = "📜 Exploring EventSphere!";
+
+    let scrollTop = document.documentElement.scrollTop;
+    let scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    let progress = (scrollTop / scrollHeight) * 100;
+    progressBar.style.width = progress + "%";
+
+    document.body.style.background = "linear-gradient(#141E30,#243B55)";
+}
+
+// RESIZE EVENT
+window.onresize = function(){
+    resizeCounter++;
+    resizeCount.innerHTML = resizeCounter;
+    statusText.innerHTML = "📏 Window Resized!";
+    document.body.style.background = "linear-gradient(#1f4037,#99f2c8)";
+}
+
+// FOCUS EVENT
+window.onfocus = function(){
+    statusText.innerHTML = "🟢 EventSphere Active";
+    document.body.style.background = "#0f9b0f";
+}
+
+// BLUR EVENT
+window.onblur = function(){
+    statusText.innerHTML = "🔴 EventSphere Inactive";
+    document.body.style.background = "#8e0e00";
+}
+
+// BEFORE UNLOAD
+window.onbeforeunload = function(){
+    return "Are you sure you want to leave EventSphere?";
+}
+
+</script>
+
+</body>
+</html>
