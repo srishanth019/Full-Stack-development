@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Roamora Travel</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Inter', sans-serif;
+    background:#fafafa;
+    color:#222;
+}
+
+.hero{
+    min-height:100vh;
+    background:
+        linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.55)),
+        url("https://images.unsplash.com/photo-1507525428034-b723cf961d3e");
+    background-size:cover;
+    background-position:center;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.hero-content{
+    text-align:center;
+    color:#fff;
+    max-width:700px;
+    padding:40px;
+}
+
+.hero-content h1{
+    font-family:'Playfair Display', serif;
+    font-size:64px;
+    line-height:1.1;
+}
+
+.hero-content span{
+    color:#c89b3c;
+}
+
+.hero-content p{
+    margin-top:20px;
+    font-size:18px;
+    line-height:1.7;
+    color:#eee;
+}
+
+.hero-content a{
+    display:inline-block;
+    margin-top:35px;
+    padding:14px 45px;
+    background:#c89b3c;
+    color:#000;
+    text-decoration:none;
+    font-weight:600;
+}
+
+/* ================= SECTIONS ================= */
+section{
+    padding:100px;
+}
+
+/* STORY */
+.story{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+}
+
+.story img{
+    width:100%;
+    border-radius:12px;
+}
+
+.story h2{
+    font-family:'Playfair Display', serif;
+    font-size:42px;
+}
+
+.story p{
+    margin-top:20px;
+    color:#555;
+    line-height:1.8;
+}
+
+/* PLACES */
+.places{
+    background:#111;
+    color:#fff;
+}
+
+.places h2{
+    font-family:'Playfair Display', serif;
+    font-size:44px;
+    margin-bottom:50px;
+    text-align:center;
+}
+
+.place-list{
+    display:flex;
+    gap:40px;
+    overflow-x:auto;
+}
+
+.place{
+    min-width:280px;
+}
+
+.place img{
+    width:100%;
+    height:380px;
+    object-fit:cover;
+    border-radius:12px;
+}
+
+.place p{
+    margin-top:15px;
+    text-align:center;
+}
+
+/* CTA */
+.cta{
+    background:#c89b3c;
+    text-align:center;
+}
+
+.cta h2{
+    font-family:'Playfair Display', serif;
+    font-size:46px;
+}
+
+.cta p{
+    margin-top:15px;
+}
+
+.cta a{
+    display:inline-block;
+    margin-top:30px;
+    padding:16px 50px;
+    background:#000;
+    color:#c89b3c;
+    text-decoration:none;
+}
+
+/* FOOTER */
+footer{
+    padding:30px;
+    text-align:center;
+    font-size:14px;
+    color:#777;
+}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+    section{
+        padding:60px;
+    }
+    .story{
+        grid-template-columns:1fr;
+    }
+    .hero-content h1{
+        font-size:48px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- HOME -->
+<div class="hero">
+    <div class="hero-content">
+        <h1>Travel is<br><span>Not a Place</span><br>It’s a Feeling</h1>
+        <p>
+            Roamora creates meaningful journeys for travelers
+            who want more than destinations.
+        </p>
+        <a href="#">Explore Now</a>
+    </div>
+</div>
+
+<!-- STORY -->
+<section class="story">
+    <img src="https://img.freepik.com/free-photo/travel-concept-with-landmarks_23-2149153256.jpg">
+    <div>
+        <h2>Designed for Explorers</h2>
+        <p>
+            Travel with intention. Discover cultures, landscapes,
+            and experiences that stay with you forever.
+        </p>
+    </div>
+</section>
+
+<!-- PLACES -->
+<section class="places">
+    <h2>Popular Destinations</h2>
+    <div class="place-list">
+        <div class="place">
+            <img src="https://media.nomadicmatt.com/moroccoguide.jpg">
+            <p>Morocco</p>
+        </div>
+        <div class="place">
+            <img src="https://waylesstravelers.com/wp-content/uploads/2024/09/1JapanTravelTips-2.jpg">
+            <p>Japan</p>
+        </div>
+        <div class="place">
+            <img src="https://www.machupicchu.org/wp-content/uploads/peru-travel-2025.jpg">
+            <p>Peru</p>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+    <h2>Begin Your Journey</h2>
+    <p>The world is waiting</p>
+    <a href="#">Contact Us</a>
+</section>
+
+<footer>
+    © 2026 Roamora Travel
+</footer>
+
+</body>
+</html>
