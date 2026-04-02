@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<head>
+  <title>Task 11</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: "Segoe UI", sans-serif;
+    }
+
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #eef2ff, #f8fafc);
+      color: #2d2d2d;
+    }
+
+    header {
+      text-align: center;
+      padding: 20px;
+      font-size: 22px;
+      font-weight: 600;
+      color: #3b3b5c;
+    }
+
+    main {
+      max-width: 650px;
+      margin: auto;
+      padding: 10px;
+    }
+
+    .card {
+      background: #ffffff;
+      border-radius: 14px;
+      padding: 18px;
+      margin-bottom: 18px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.06);
+      transition: transform 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-3px);
+    }
+
+    h2 {
+      font-size: 16px;
+      margin-bottom: 10px;
+      color: #444;
+    }
+
+    button {
+      padding: 7px 14px;
+      border: none;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #6366f1, #8b5cf6);
+      color: white;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    button:hover {
+      transform: scale(1.05);
+      opacity: 0.9;
+    }
+
+    input {
+      padding: 8px;
+      border-radius: 8px;
+      border: 1px solid #ddd;
+      width: 70%;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: #8b5cf6;
+    }
+
+    .row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      border-radius: 10px;
+      margin: 10px 0;
+    }
+
+    #count {
+      font-size: 18px;
+      min-width: 40px;
+      text-align: center;
+      font-weight: 500;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>Task 11 </header>
+
+  <main>
+    <div class="card">
+      <h2>Background Color</h2>
+      <button id="bgBtn">Change Background</button>
+    </div>
+
+    <div class="card">
+      <h2>Live Text</h2>
+      <input type="text" id="textInput" placeholder="Type something...">
+      <p id="textOutput"></p>
+    </div>
+
+    <div class="card">
+      <h2>Password</h2>
+      <div class="row">
+        <input type="password" id="password">
+        <button id="togglePass">Show</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Image Slider</h2>
+      <img id="slider" src="https://cdn.wallpapersafari.com/14/61/IKb4e0.jpg">
+      <div class="row">
+        <button id="prev">Prev</button>
+        <button id="next">Next</button>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Counter</h2>
+      <div class="row">
+        <button id="dec">-</button>
+        <span id="count">0</span>
+        <button id="inc">+</button>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    document.getElementById("bgBtn").addEventListener("click", () => {
+      const colors = [
+        "#eef2ff",
+        "#fdf2f8",
+        "#ecfeff",
+        "#fef9c3",
+        "#f0fdf4"
+      ];
+      document.body.style.background =
+        colors[Math.floor(Math.random() * colors.length)];
+    });
+
+    const input = document.getElementById("textInput");
+    const output = document.getElementById("textOutput");
+
+    input.addEventListener("input", () => {
+      output.textContent = input.value;
+    });
+
+    const pass = document.getElementById("password");
+    const toggle = document.getElementById("togglePass");
+
+    toggle.addEventListener("click", () => {
+      if (pass.type === "password") {
+        pass.type = "text";
+        toggle.textContent = "Hide";
+      } else {
+        pass.type = "password";
+        toggle.textContent = "Show";
+      }
+    });
+
+    const images = [
+      "https://images.pexels.com/photos/5645992/pexels-photo-5645992.jpeg?cs=srgb&dl=pexels-hector-perez-1148818-5645992.jpg&fm=jpg",
+      "https://rukminim2.flixcart.com/image/480/480/jtbtt3k0/poster/j/z/g/large-gk335-beautiful-natural-scenery-waterfall-poster-18-inch-x-original-imafep3djmeszhsf.jpeg?q=90",
+      "https://media.istockphoto.com/id/2130934199/photo/amazing-scenery-at-a-mountain-lake-in-the-bavarian-alps.jpg?s=612x612&w=0&k=20&c=_veXqFDnbN_A2aUQ5s5tCvOJRsYer3LDmwHyUPKLwZM=",
+      "https://img.freepik.com/premium-photo/scenic-view-lake-landscape-against-mountains-jetty_628924-4193.jpg",
+      "https://www.usnews.com/object/image/00000162-f3bb-d0d5-a57f-fbfb2d380000/30-bisti-badlands.jpg?update-time=1745872919134&size=responsive640"
+    ];
+
+    let index = 0;
+    const slider = document.getElementById("slider");
+
+    document.getElementById("next").addEventListener("click", () => {
+      index = (index + 1) % images.length;
+      slider.src = images[index];
+    });
+
+    document.getElementById("prev").addEventListener("click", () => {
+      index = (index - 1 + images.length) % images.length;
+      slider.src = images[index];
+    });
+
+    let count = 0;
+    const countEl = document.getElementById("count");
+
+    document.getElementById("inc").addEventListener("click", () => {
+      count++;
+      countEl.textContent = count;
+    });
+
+    document.getElementById("dec").addEventListener("click", () => {
+      count = Math.max(0, count - 1);
+      countEl.textContent = count;
+    });
+  </script>
+
+</body>
+</html>
