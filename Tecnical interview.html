@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tecnical interview r1</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #888a92, #764ba2);
+            color: white;
+        }
+
+        header {
+            text-align: center;
+            padding: 20px;
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(10px);
+        }
+
+        section {
+            margin: 30px;
+            padding: 25px;
+            border-radius: 15px;
+            background: rgba(255,255,255,0.1);
+
+        h2 {
+            margin-bottom: 10px;
+        }
+
+        figure {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        img {
+            width: 300px;
+            border-radius: 20px;
+            box-shadow: 0 5px 15px black;
+        }
+
+        figcaption {
+            margin-top: 8px;
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        audio, video {
+            margin-top: 20px;
+            width: 100%;
+            border-radius: 10px;
+        }
+
+        .box {
+            width: 100px;
+            height: 100px;
+            margin-top: 30px;
+            border-radius: 15px;
+            background: linear-gradient(45deg, #00ffcc, #00ccff);
+            animation: move 4s infinite alternate ease-in-out;
+        }
+
+        @keyframes move {
+            from { transform: translateX(0); }
+            to { transform: translateX(300px); }
+        }
+
+        footer {
+            text-align: center;
+            padding: 15px;
+            background: rgba(0,0,0,0.5);
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1> My Modern Website</h1>
+</header>
+
+<section>
+    <article>
+        <h2>html</h2>
+    </article>
+
+    <figure>
+        <img src="https://i.etsystatic.com/40533556/r/il/11cc06/6233144364/il_fullxfull.6233144364_918l.jpg">
+        <figcaption>Beautiful Nature </figcaption>
+    </figure>
+
+    <audio controls>
+        <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3">
+    </audio>
+
+    <video controls>
+        <source src="https://www.w3schools.com/html/mov_bbb.mp4">
+    </video>
+
+    <h2>🎯 Animation</h2>
+    <div class="box"></div>
+
+</section>
+
+<footer>
+    <p>© 2026 | Designed by You 😎</p>
+</footer>
+
+</body>
+</html>
